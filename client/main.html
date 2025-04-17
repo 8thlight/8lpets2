@@ -1,0 +1,269 @@
+<head>
+  <title>8L Pets - Flight Rising Inspired</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+  {{> main}}
+</body>
+
+<template name="main">
+  <div id="app-container">
+    <header>
+      <h1>8L Pets</h1>
+      <nav>
+        <ul>
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/pets" class="nav-link">My Pets</a></li>
+          <li><a href="/breeding" class="nav-link">Breeding</a></li>
+          <li><a href="/care" class="nav-link">Pet Care</a></li>
+          <li><a href="/games" class="nav-link">Games</a></li>
+          <li><a href="/profile" class="nav-link profile-link">Profile</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      {{> Template.dynamic template=currentPage}}
+    </main>
+  </div>
+</template>
+
+<template name="home">
+  <div class="home-content">
+    <h2>Welcome to 8L Pets!</h2>
+    <p>A Flight Rising inspired pet collection and breeding game.</p>
+
+    <div class="features">
+      <div class="feature-card">
+        <h3>Collect Pets</h3>
+        <p>Discover and collect unique pets with different traits and colors.</p>
+        <a href="/pets" class="btn btn-primary">View My Pets</a>
+      </div>
+
+      <div class="feature-card">
+        <h3>Breed Pets</h3>
+        <p>Breed your pets to create new offspring with combined traits.</p>
+        <a href="/breeding" class="btn btn-primary">Go to Breeding</a>
+      </div>
+
+      <div class="feature-card">
+        <h3>Care for Pets</h3>
+        <p>Feed, play with, and take care of your pets to keep them happy and healthy.</p>
+        <a href="/care" class="btn btn-primary">Care for Pets</a>
+      </div>
+
+      <div class="feature-card">
+        <h3>Play Games</h3>
+        <p>Earn currency and items by playing mini-games with your pets.</p>
+        <a href="/games" class="btn btn-primary">Play Games</a>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="pets">
+  <div class="pets-content">
+    <h2>My Pets Collection</h2>
+    <p>Here you can view and manage your pet collection.</p>
+
+    <div class="pet-grid" id="pet-grid">
+      {{#each pets}}
+        <div class="pet-card" data-pet-id="{{_id}}">
+          <div class="pet-image" style="background-color: {{primaryColor}};"></div>
+          <div class="pet-info">
+            <h3>{{name}}</h3>
+            <p>{{species}} - Level {{level}}</p>
+            <div class="pet-stats">
+              <span>❤️ {{health}}</span>
+              <span>⚔️ {{strength}}</span>
+              <span>🛡️ {{defense}}</span>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+
+      <div class="pet-card add-pet" id="add-pet-button">
+        <div class="add-icon">+</div>
+        <p>Get a new pet</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="breeding">
+  <div class="breeding-content">
+    <h2>Pet Breeding</h2>
+    <p>Select two compatible pets to breed and create offspring with combined traits.</p>
+
+    <div class="breeding-selection">
+      <div class="parent-selection">
+        <h3>Select First Parent</h3>
+        <div class="pet-grid small">
+          {{#each pets}}
+            <div class="pet-card" data-pet-id="{{_id}}">
+              <div class="pet-image" style="background-color: {{primaryColor}};"></div>
+              <div class="pet-info">
+                <h4>{{name}}</h4>
+                <p>{{species}} - {{gender}}</p>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
+    <button id="breed-button" class="btn btn-primary" disabled>Breed Selected Pets</button>
+  </div>
+</template>
+
+<template name="care">
+  <div class="care-content">
+    <h2>Pet Care Center</h2>
+    <p>Take care of your pets to keep them happy and healthy.</p>
+
+    <div class="care-tabs">
+      <button class="tab-button active" data-tab="feeding">Feeding</button>
+      <button class="tab-button" data-tab="grooming">Grooming</button>
+      <button class="tab-button" data-tab="healing">Healing</button>
+      <button class="tab-button" data-tab="training">Training</button>
+    </div>
+
+    <div class="tab-content">
+      <div id="feeding-tab" class="tab-panel active">
+        <h3>Feed Your Pets</h3>
+        <p>Select a pet and food item to feed them.</p>
+
+        <div class="pet-selection">
+          <h4>Select a Pet to Feed</h4>
+          <div class="pet-grid small">
+            {{#each pets}}
+              <div class="pet-card" data-pet-id="{{_id}}">
+                <div class="pet-image" style="background-color: {{primaryColor}};"></div>
+                <div class="pet-info">
+                  <h4>{{name}}</h4>
+                  <p>{{species}}</p>
+                </div>
+              </div>
+            {{/each}}
+          </div>
+        </div>
+
+        <button id="feed-button" class="btn btn-primary" disabled>Feed Pet</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="games">
+  <div class="games-content">
+    <h2>Mini Games</h2>
+    <p>Play games with your pets to earn currency and items!</p>
+
+    <div class="games-grid">
+      <div class="game-card" id="treasure-hunt">
+        <div class="game-image" style="background-color: #FFD700"></div>
+        <div class="game-info">
+          <h3>Treasure Hunt</h3>
+          <p>Search for hidden treasures with your pet.</p>
+          <button class="play-button btn btn-primary">Play</button>
+        </div>
+      </div>
+
+      <div class="game-card" id="pet-race">
+        <div class="game-image" style="background-color: #32CD32"></div>
+        <div class="game-info">
+          <h3>Pet Race</h3>
+          <p>Race your pet against others to win prizes.</p>
+          <button class="play-button btn btn-primary">Play</button>
+        </div>
+      </div>
+
+      <div class="game-card" id="puzzle-solve">
+        <div class="game-image" style="background-color: #9370DB"></div>
+        <div class="game-info">
+          <h3>Puzzle Solve</h3>
+          <p>Solve puzzles with your pet to earn rewards.</p>
+          <button class="play-button btn btn-primary">Play</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="profile">
+  <div class="user-profile">
+    <h2>User Profile</h2>
+    {{#if currentUser}}
+      <div class="profile-info">
+        <p><strong>Username:</strong> {{currentUser.username}}</p>
+        <p><strong>Email:</strong> {{userEmail}}</p>
+        <p><strong>Member Since:</strong> {{formatDate currentUser.createdAt}}</p>
+      </div>
+
+      <div class="profile-stats">
+        <div class="stat-card">
+          <h3>Pet Count</h3>
+          <p class="stat-value">{{petCount}}</p>
+        </div>
+
+        <div class="stat-card">
+          <h3>Highest Level Pet</h3>
+          <p class="stat-value">{{highestLevel}}</p>
+        </div>
+      </div>
+
+      <button id="logout-button" class="btn btn-danger">Logout</button>
+    {{else}}
+      <p>Please log in to view your profile.</p>
+    {{/if}}
+  </div>
+</template>
+
+<template name="login">
+  <div class="auth-container">
+    <div class="auth-form">
+      <h2>Login</h2>
+      <form id="login-form">
+        <div class="form-group">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+        <p>Don't have an account? <a href="/register" class="switch-auth">Register</a></p>
+      </form>
+    </div>
+  </div>
+</template>
+
+<template name="register">
+  <div class="auth-container">
+    <div class="auth-form">
+      <h2>Register</h2>
+      <form id="register-form">
+        <div class="form-group">
+          <label for="register-username">Username</label>
+          <input type="text" id="register-username" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="register-email">Email</label>
+          <input type="email" id="register-email" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="register-password">Password</label>
+          <input type="password" id="register-password" class="form-control" required minlength="6">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+        <p>Already have an account? <a href="/login" class="switch-auth">Login</a></p>
+      </form>
+    </div>
+  </div>
+</template>

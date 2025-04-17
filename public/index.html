@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>8L Pets - Flight Rising Inspired</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div id="app-container">
+    <header>
+      <h1>8L Pets</h1>
+      <nav>
+        <ul id="main-nav">
+          <li><a href="#home" class="nav-link" data-page="home">Home</a></li>
+          <li><a href="#pets" class="nav-link" data-page="pets">My Pets</a></li>
+          <li><a href="#breeding" class="nav-link" data-page="breeding">Breeding</a></li>
+          <li><a href="#care" class="nav-link" data-page="care">Pet Care</a></li>
+          <li><a href="#games" class="nav-link" data-page="games">Games</a></li>
+          <li><a href="#profile" class="nav-link" data-page="profile">Profile</a></li>
+        </ul>
+        <div id="auth-nav">
+          <button id="login-button" class="nav-button" data-page="login">Login</button>
+          <button id="register-button" class="nav-button" data-page="register">Register</button>
+          <button id="logout-button" class="nav-button" style="display: none;">Logout</button>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <!-- Home Page -->
+      <div id="home-page" class="page">
+        <div class="home-content">
+          <h2>Welcome to 8L Pets!</h2>
+          <p>A Flight Rising inspired pet collection and breeding game.</p>
+
+          <div class="features">
+            <div class="feature-card">
+              <h3>Collect Pets</h3>
+              <p>Discover and collect unique pets with different traits and colors.</p>
+              <a href="#pets" class="btn btn-primary" data-page="pets">View My Pets</a>
+            </div>
+
+            <div class="feature-card">
+              <h3>Breed Pets</h3>
+              <p>Breed your pets to create new offspring with combined traits.</p>
+              <a href="#breeding" class="btn btn-primary" data-page="breeding">Go to Breeding</a>
+            </div>
+
+            <div class="feature-card">
+              <h3>Care for Pets</h3>
+              <p>Feed, play with, and take care of your pets to keep them happy and healthy.</p>
+              <a href="#care" class="btn btn-primary" data-page="care">Care for Pets</a>
+            </div>
+
+            <div class="feature-card">
+              <h3>Play Games</h3>
+              <p>Earn currency and items by playing mini-games with your pets.</p>
+              <a href="#games" class="btn btn-primary" data-page="games">Play Games</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pets Page -->
+      <div id="pets-page" class="page" style="display: none;">
+        <div class="pets-content">
+          <h2>My Pets Collection</h2>
+          <p>Here you can view and manage your pet collection.</p>
+
+          <div class="pet-grid" id="pet-grid">
+            <div class="pet-card">
+              <div class="pet-image" style="background-color: #FF5733;"></div>
+              <div class="pet-info">
+                <h3>Ember</h3>
+                <p>Dragon - Level 5</p>
+                <div class="pet-stats">
+                  <span>❤️ 80</span>
+                  <span>⚔️ 25</span>
+                  <span>🛡️ 20</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pet-card">
+              <div class="pet-image" style="background-color: #AED6F1;"></div>
+              <div class="pet-info">
+                <h3>Frost</h3>
+                <p>Tundra - Level 3</p>
+                <div class="pet-stats">
+                  <span>❤️ 65</span>
+                  <span>⚔️ 15</span>
+                  <span>🛡️ 30</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pet-card">
+              <div class="pet-image" style="background-color: #D7BDE2;"></div>
+              <div class="pet-info">
+                <h3>Whisper</h3>
+                <p>Fae - Level 2</p>
+                <div class="pet-stats">
+                  <span>❤️ 50</span>
+                  <span>⚔️ 10</span>
+                  <span>🛡️ 10</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pet-card add-pet" id="add-pet-button">
+              <div class="add-icon">+</div>
+              <p>Get a new pet</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Breeding Page -->
+      <div id="breeding-page" class="page" style="display: none;">
+        <div class="breeding-content">
+          <h2>Pet Breeding</h2>
+          <p>Select two compatible pets to breed and create offspring with combined traits.</p>
+
+          <div class="breeding-selection">
+            <div class="parent-selection">
+              <h3>Select First Parent</h3>
+              <div class="pet-grid small">
+                <div class="pet-card" data-pet-id="ember">
+                  <div class="pet-image" style="background-color: #FF5733;"></div>
+                  <div class="pet-info">
+                    <h4>Ember</h4>
+                    <p>Dragon - Female</p>
+                  </div>
+                </div>
+
+                <div class="pet-card" data-pet-id="frost">
+                  <div class="pet-image" style="background-color: #AED6F1;"></div>
+                  <div class="pet-info">
+                    <h4>Frost</h4>
+                    <p>Tundra - Male</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="parent-selection">
+              <h3>Select Second Parent</h3>
+              <div class="pet-grid small">
+                <div class="pet-card" data-pet-id="whisper">
+                  <div class="pet-image" style="background-color: #D7BDE2;"></div>
+                  <div class="pet-info">
+                    <h4>Whisper</h4>
+                    <p>Fae - Female</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button id="breed-button" class="btn btn-primary">Breed Selected Pets</button>
+        </div>
+      </div>
+
+      <!-- Care Page -->
+      <div id="care-page" class="page" style="display: none;">
+        <div class="care-content">
+          <h2>Pet Care Center</h2>
+          <p>Take care of your pets to keep them happy and healthy.</p>
+
+          <div class="care-tabs">
+            <button class="tab-button active" data-tab="feeding">Feeding</button>
+            <button class="tab-button" data-tab="grooming">Grooming</button>
+            <button class="tab-button" data-tab="healing">Healing</button>
+            <button class="tab-button" data-tab="training">Training</button>
+          </div>
+
+          <div class="tab-content">
+            <div id="feeding-tab" class="tab-panel active">
+              <h3>Feed Your Pets</h3>
+              <p>Select a pet and food item to feed them.</p>
+
+              <div class="pet-selection">
+                <h4>Select a Pet to Feed</h4>
+                <div class="pet-grid small">
+                  <div class="pet-card">
+                    <div class="pet-image" style="background-color: #FF5733;"></div>
+                    <div class="pet-info">
+                      <h4>Ember</h4>
+                      <p>Dragon</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <button id="feed-button" class="btn btn-primary">Feed Pet</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Games Page -->
+      <div id="games-page" class="page" style="display: none;">
+        <div class="games-content">
+          <h2>Mini Games</h2>
+          <p>Play games with your pets to earn currency and items!</p>
+
+          <div class="games-grid">
+            <div class="game-card" id="treasure-hunt">
+              <div class="game-image" style="background-color: #FFD700"></div>
+              <div class="game-info">
+                <h3>Treasure Hunt</h3>
+                <p>Search for hidden treasures with your pet.</p>
+                <button class="play-button btn btn-primary">Play</button>
+              </div>
+            </div>
+
+            <div class="game-card" id="pet-race">
+              <div class="game-image" style="background-color: #32CD32"></div>
+              <div class="game-info">
+                <h3>Pet Race</h3>
+                <p>Race your pet against others to win prizes.</p>
+                <button class="play-button btn btn-primary">Play</button>
+              </div>
+            </div>
+
+            <div class="game-card" id="puzzle-solve">
+              <div class="game-image" style="background-color: #9370DB"></div>
+              <div class="game-info">
+                <h3>Puzzle Solve</h3>
+                <p>Solve puzzles with your pet to earn rewards.</p>
+                <button class="play-button btn btn-primary">Play</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile Page -->
+      <div id="profile-page" class="page" style="display: none;">
+        <div class="user-profile">
+          <h2>User Profile</h2>
+          <div class="profile-info">
+            <p><strong>Username:</strong> <span id="profile-username">Player1</span></p>
+            <p><strong>Email:</strong> <span id="profile-email">player1@example.com</span></p>
+            <p><strong>Member Since:</strong> <span id="profile-date">January 1, 2023</span></p>
+          </div>
+
+          <div class="profile-stats">
+            <div class="stat-card">
+              <h3>Pet Count</h3>
+              <p class="stat-value">3</p>
+            </div>
+
+            <div class="stat-card">
+              <h3>Highest Level Pet</h3>
+              <p class="stat-value">5</p>
+            </div>
+          </div>
+
+          <button id="profile-logout-button" class="btn btn-danger">Logout</button>
+        </div>
+      </div>
+
+      <!-- Login Page -->
+      <div id="login-page" class="page" style="display: none;">
+        <div class="auth-container">
+          <div class="auth-form">
+            <h2>Login</h2>
+            <form id="login-form">
+              <div class="form-group">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Login</button>
+              </div>
+              <p>Don't have an account? <a href="#register" class="switch-auth" data-page="register">Register</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Register Page -->
+      <div id="register-page" class="page" style="display: none;">
+        <div class="auth-container">
+          <div class="auth-form">
+            <h2>Register</h2>
+            <form id="register-form">
+              <div class="form-group">
+                <label for="register-username">Username</label>
+                <input type="text" id="register-username" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="register-email">Email</label>
+                <input type="email" id="register-email" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label for="register-password">Password</label>
+                <input type="password" id="register-password" class="form-control" required minlength="6">
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Register</button>
+              </div>
+              <p>Already have an account? <a href="#login" class="switch-auth" data-page="login">Login</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
